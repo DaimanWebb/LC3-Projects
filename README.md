@@ -1,2 +1,9 @@
-# Patel---Introduction-to-Computing
-A repo for LC-3 Labs &amp; Coding Assignments, instructions to set up the LC-3 sim, and anything else pertaining to the coding side of the LC-3 architecture
+# LC3 Assembly Projects
+A collection of LC-3 assembly programs for learning and experimentation.
+
+## Projects
+1. addnums.asm – Simple program adding the values held at x3000 to x3009, sequentially.
+2. lab1 – Demonstrates branching and looping.
+3. lab2 – Reads and prints characters.
+
+ADD R1, R2, #0
