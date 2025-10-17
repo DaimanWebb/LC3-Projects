@@ -1,8 +1,6 @@
 # LC3 Assembly Projects
 A collection of LC-3 assembly programs for learning and experimentation.
 
-# LC3 Assembly Projects
-A collection of LC-3 assembly programs for learning and experimentation.
 
 # 1 - PROGRAMMING ASSIGNMENTS
 
