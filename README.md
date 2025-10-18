@@ -225,9 +225,6 @@ and after prints out “=====” again.
 ; Return Value (None)
 ;-------------------------------------------------------------------------
 
-;; REGISTER CONVENTION
-;; COPY-PASTE SYMBOLS (COMMENT, M-DASH, ETC.)
-;; BRIEF SUMMARY OF WHAT THE PROGRAM ACCOMPLISHES
 
 # 3 - PERSONAL STUFF
 ## Arithmetic
@@ -262,7 +259,7 @@ Same program, but uses an alias to address the x0F offset
 🚫 NOT xOD (CR)
 ctrl + shift + up/down arrow increments/decrements a number
 
-# TRAP VECTOR TABLE
+# TRAP TABLE
 TRAP x20 - GETC
 TRAP x21 - OUT
 TRAP x22 - PUTS
@@ -284,3 +281,34 @@ CAN WE SET PC TO BRANCH INSTRUCTION UPON RETURNING FROM SUBROUTINE
 WHY WERE OUR ASSIGNMENTS SO OBSESSED WITH NEWLINES??
 
 WHAT IF R5 POINTS TO JUNK before a JSRR call?
+
+### Register Convention
+;=========================================================================
+;-------------------------------------------------------------------------
+; REGISTER CONVENTION
+;-------------------------------------------------------------------------
+; R0
+;-------------------------------------------------------------------------
+; R1
+;-------------------------------------------------------------------------
+; R2
+;-------------------------------------------------------------------------
+; R4
+;-------------------------------------------------------------------------
+; R5
+;-------------------------------------------------------------------------
+; R6
+;-------------------------------------------------------------------------
+; R7
+;-------------------------------------------------------------------------
+;=========================================================================
+
+### Copy Paste 
+                                                                        ;
+                                                                        —
+                                                                        ;; REGISTER CONVENTION
+;; COPY-PASTE SYMBOLS (COMMENT, M-DASH, ETC.)
+;; BRIEF SUMMARY OF WHAT THE PROGRAM ACCOMPLISHES
+
+### Objective
+### High Level Description
