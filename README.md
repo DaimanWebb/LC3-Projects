@@ -225,23 +225,37 @@ and after prints out “=====” again.
 ; Return Value (None)
 ;-------------------------------------------------------------------------
 
+;; REGISTER CONVENTION
+;; COPY-PASTE SYMBOLS (COMMENT, M-DASH, ETC.)
+;; BRIEF SUMMARY OF WHAT THE PROGRAM ACCOMPLISHES
 
 # 3 - PERSONAL STUFF
-1. addnums_literal.asm – 
-2. addnums.bin - binary version of above file
+## Arithmetic
+### addinput.asm
+- WHAT DOES THIS PROGRAM DO?
+- DOES THIS PROGRAM WORK AS INTENDED?
+- ADD RELEVANT COMMENTS TO EACH LINE -- DEFINE COMMENT SPACING & '-' CHAR
 
-## ADDING NUMBERS
-### addinput.asm
-### addnums_literal.asm
-Simple program adding the values held at x3000 to x3009, sequentially, using x0F
-### addnums_label.asm
-### multiply.bin
-### addinput.asm
 ### addnums.bin
+Simple program adding the values held at x3000 to x3009, sequentially, using x0F
+
+### addnums.asm
+
+Same program, but written in assembly vs pure machine code
+
+### addnums_label.asm
+
+Same program, but uses an alias to address the x0F offset
+
+### multiply.bin
+
+### addinput.asm
+
+
 ## DATA MOVEMENT
-### access_violation_ldi.asm
-### access_violation_ldr.asm
-### data_moves.asm
+### accessviolation_LDI.asm
+### accessviolation_LDI.asm 
+### datamoves.asm
 
 # LC3Tools&Tips
 ✅ Use x0A (LF) when checking for Enter in LC-3 sentinel loops.

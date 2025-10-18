@@ -20,3 +20,6 @@ PTR     .FILL   x0FC
                               ;       Multiple labels at the same memory location. 
                               ;       LC3 addnums.asm(12,1): Label --- and PTR are at the same memory 
                               ;       Illegal label name. LC3 addnums.asm(12,1): Label name is illegal
+
+;  PTR     .FILL   x0FC       
+;         .END                               

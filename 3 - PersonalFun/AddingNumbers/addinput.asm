@@ -1,9 +1,9 @@
 .ORIG X3000
 
 TRAP x23
-LD R6, ASCII                            ; Load R6 with ASCII
-LD R5, NEGASCII                         ; Load R5 with ASCII
-ADD R1, R0, x0        
+LD R6, ASCII                                ; Load R6 with ASCII
+LD R5, NEGASCII                             ; Load R5 with ASCII
+ADD R1, R0, x0                              
 ADD R1, R1, R5
 TRAP x23           
 ADD R0, R0, R5
@@ -19,3 +19,6 @@ ASCII       .FILL       x30             ; mask to add to convert to ASCII
 NEGASCII    .FILL       xFFD0           ; negated ASCII mask (-x30)
 MESG        .STRINGZ    "The sum is: "  
             .END
+S
+;; LOOKS LIKE THIS PROGRAM PROMPTS THE USER FOR TWO NUMBERS, ADDS THEM TOGETHER, AND DISPLAYS THE SUM
+;; INPUT: TWO SINGLE-DIGIT NUMBERS FROM THE KEYBOARD
