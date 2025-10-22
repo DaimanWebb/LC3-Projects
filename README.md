@@ -1,11 +1,9 @@
 # LC3 Assembly Projects
 A collection of LC-3 assembly programs for learning and experimentation.
-
-
 # 1 - PROGRAMMING ASSIGNMENTS
-
 ## Programming Assignment 1
 The following program performs the action:
+
 R3 <-- 12 * 6 ; (i.e. multiply 12 by 6 and write the result into Register 3) using the equivalent of a DO-WHILE loop
 
 And just filling in the registers, setting breakpoints at the start of the loop to see if the program does what it is supposed to do
