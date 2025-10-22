@@ -43,14 +43,28 @@
 ;-------------------------------------------------------------------------
 ;   GET INPUT FROM USER
 ;-------------------------------------------------------------------------
-    TRAP x23                                ;   CALLS IN
+    LD R0 NEWLINE                           ;   LOADS R0 WITH x0A, THE ASCII CODE FOR NEWLINE 
+    TRAP x21                                ;   OUT - PRINTS THE NEWLINE
+    LEA R0 NUM                              ;   LOAD R0 WITH ADDRESS ALIASED BY NUM
+    TRAP x22                                ;   PRINTS "NUM: "
+    TRAP x20                                ;   CALLS GETC
+    TRAP x21                                ;   OUT - ECHOES INPUT BACK TO USER
     ADD R1, R0, x0                          ;   R1 <- R0 (SAVES FIRST CHAR IN R1)
+    LD R0 NEWLINE                           ;   LOADS R0 WITH x0A, THE ASCII CODE FOR NEWLINE 
+    TRAP x21                                ;   OUT - PRINTS THE NEWLINE
 ;-------------------------------------------------------------------------
 ;   GET INPUT FROM USER AGAIN =D=
 ;-------------------------------------------------------------------------
-    TRAP x23                                ;   CALLS IN
+    LEA R0 NUM                              ;   LOAD R0 WITH ADDRESS ALIASED BY NUM
+    TRAP x22                                ;   PRINTS "NUM: "
+    TRAP x20                                ;   CALLS GETC
+    TRAP x21                                ;   OUT - ECHOES INPUT BACK TO USER
     ADD R2, R0, x0                          ;   R2 <- R0 (SAVES FIRST CHAR IN R2)
+    LD R0 NEWLINE                           ;   LOADS R0 WITH x0A, THE ASCII CODE FOR NEWLINE 
+    TRAP x21                                ;   OUT - PRINTS THE NEWLINE
 ;-------------------------------------------------------------------------
+;   ^^^ COULD BE SOLVE WITH A 2 ITERATION LOOP, BUT SINCE ONLY 2 INPUTS ARE NEEDED,
+;   I JUST WROTE IT TWICE FOR SIMPLICITY'S SAKE ^^^
 ;=========================================================================
 ;-------------------------------------------------------------------------
 ;   OUTPUT NEWLINE
@@ -102,6 +116,7 @@ NEWLINE     .FILL       x0A
 ASCII       .FILL       x30             ; mask to add to convert to ASCII
 NEGASCII    .FILL       xFFD0           ; negated ASCII mask (-x30)
 MESG        .STRINGZ    "The sum is: "  
+NUM         .STRINGZ    "NUM: "
 PROMPT      .STRINGZ    "PLEASE, KINDLY, IF YOU WOULD, GIVE AM 2 NUMBERS TO ADD. THE SUM WILL BE DISPLAYED. GOD FORGIVE US ALL."
 GFY         .STRINGZ    "GO FUCK YOURSELF"
 ;=========================================================================

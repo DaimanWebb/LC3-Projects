@@ -226,15 +226,33 @@ and after prints out “=====” again.
 ;-------------------------------------------------------------------------
 
 
+
+
+
 # 3 - PERSONAL STUFF
+
+
 ## Arithmetic
+
 ### addinput.asm
-- WHAT DOES THIS PROGRAM DO?
-- DOES THIS PROGRAM WORK AS INTENDED?
-- ADD RELEVANT COMMENTS TO EACH LINE -- DEFINE COMMENT SPACING & '-' CHAR
+
+PROMPT THE USER TO INPUT 2 NUMS
+ADD THOSE NUMS TOGETHER
+DISPLAY THE SUM USING THE .STRINGZ IN MESG AT THE END OF THE PROGRAM
+
+CHOICE BETWEEN USING IN TRAP VERSUS GETC/OUT TRAPS 
+
+(NOTE) - GETC MUST ALWAYS BE FOLLOWED BY OUT, OTHERWISE THE USER HAS NO FEEDBACK TO CONFIRM WHAT KEY THEY JUST TYPED. 
+
+    (WARNING) - THIS IS VERY ILLEGAL AND DOING SO WILL RESULT IN CASPER COMING TO GLITCH YOUR COMPUTER & INFECT IT W/ MALWARE. ARE YOU HAPPY? THIS IS WHAT YOU WANTED.
+
+### addinput_GETC.asm
+
+SAME PROGRAM AS ABOVE, ONLY INSTEAD OF TRAPx23, WE'LL USE A TRAPx20/TRAPx21 COMBO FOR ECHOING INPUT TO THE CONSOLE
+
 
 ### addnums.bin
-Simple program adding the values held at x3000 to x3009, sequentially, using x0F
+Simple program adding the values held at x3000 to x3009, sequentially, using x0FC PC+OFFSET MEMORY ADDRESSING MODE
 
 ### addnums.asm
 
@@ -242,73 +260,77 @@ Same program, but written in assembly vs pure machine code
 
 ### addnums_label.asm
 
-Same program, but uses an alias to address the x0F offset
+Same program, but uses an alias to address the x0FC offset
 
 ### multiply.bin
 
-### addinput.asm
-
 
 ## DATA MOVEMENT
+
+
 ### accessviolation_LDI.asm
-### accessviolation_LDI.asm 
+
+### accessviolation_LDR.asm 
+
 ### datamoves.asm
+
+
 
 # LC3Tools&Tips
 ✅ Use x0A (LF) when checking for Enter in LC-3 sentinel loops.
 🚫 NOT xOD (CR)
 ctrl + shift + up/down arrow increments/decrements a number
 
-# TRAP TABLE
+## TRAP TABLE
 TRAP x20 - GETC
 TRAP x21 - OUT
 TRAP x22 - PUTS
 TRAP x23 - IN
 TRAP x25 - HALT
 
-# Ongoing Inquiries
-x20 DIFFERENCE BETWEEN ASCII ALPHABET CASES
 
-TEST RELOADING OBJECT FILES WITH ALL FILES IN LAB3 -- does memory/data get overwritten?
-
-Test program overwriting own memory instructions (SELF REFERENTIAL PROGRAM) -- how does lc3-sim guard against this?
-- logical vs literal (subroutine corrupting memory used by program ahead)
-
-how many combinations of nzp exist?
-
-CAN WE SET PC TO BRANCH INSTRUCTION UPON RETURNING FROM SUBROUTINE
-
-WHY WERE OUR ASSIGNMENTS SO OBSESSED WITH NEWLINES??
-
-WHAT IF R5 POINTS TO JUNK before a JSRR call?
-
-### Register Convention
-;=========================================================================
+;==========================================================================
+;                       (UPH) UNIVERSAL PROGRAM HEADER                           
+;==========================================================================
+;                              Copy—&—Paste 
+;==========================================================================
+;                                   —
+;==========================================================================
+;   OBJECTIVE:
 ;-------------------------------------------------------------------------
-; REGISTER CONVENTION
+;   1. 
+;   2. 
+;==========================================================================
+;                          HIGH-LEVEL BREAKDOWN    
 ;-------------------------------------------------------------------------
-; R0
+;   1. 
+;   2.
+;==========================================================================
+;                          REGISTER CONVENTION
+;==========================================================================
 ;-------------------------------------------------------------------------
-; R1
+; R0  :         
+; EOP : 
 ;-------------------------------------------------------------------------
-; R2
+; R1 -
+; EOP : 
 ;-------------------------------------------------------------------------
-; R4
+; R2:
+; EOP : 
 ;-------------------------------------------------------------------------
-; R5
+; R3 - 
+; EOP : 
 ;-------------------------------------------------------------------------
-; R6
+; R4 - 
+; EOP : 
 ;-------------------------------------------------------------------------
-; R7
+; R5 - 
+; EOP : 
 ;-------------------------------------------------------------------------
-;=========================================================================
-
-### Copy Paste 
-                                                                        ;
-                                                                        —
-                                                                        ;; REGISTER CONVENTION
-;; COPY-PASTE SYMBOLS (COMMENT, M-DASH, ETC.)
-;; BRIEF SUMMARY OF WHAT THE PROGRAM ACCOMPLISHES
-
-### Objective
-### High Level Description
+; R6 - 
+; EOP : 
+;-------------------------------------------------------------------------
+; R7 - 
+; EOP : 
+;-------------------------------------------------------------------------
+;==========================================================================
