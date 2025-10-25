@@ -12,8 +12,9 @@
 ;==========================================================================
 ;                          HIGH-LEVEL BREAKDOWN    
 ;-------------------------------------------------------------------------
-;   1. We can use a label OR hardcode the address
-;   2. Load the address of the first number into R2
+;   1. ALIAS ADDRESSES x3100, x3101, x3102 WITH PTR, LABEL, ALIAS, RESPECTIVELY
+;   2. PUT VALUES #5, #10, #15 AT THOSE LOCATIONS RESPECTIVELY
+;   3. PUT THE VALUES HELD AT THOSE LOCATIONS IN REGISTERS 5-7, RESPECTIVELY
 ;==========================================================================
 ;                          REGISTER CONVENTION
 ;==========================================================================

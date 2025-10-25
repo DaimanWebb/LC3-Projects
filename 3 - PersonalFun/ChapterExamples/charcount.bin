@@ -1,0 +1,51 @@
+;==========================================================================
+; REGISTER CONVENTION (as used in this listing)
+; R0 : Target character / output ASCII digit
+; R1 : Current character loaded from file / temporary comparison
+; R2 : Match counter (0–9)
+; R3 : Pointer to current character in file
+; R4 : Temporary / EOT test
+; R5-R7 : Unused
+;==========================================================================
+    0011000000000000    ; .ORIG x3000
+    0 1 0 1 0 1 0 0 1 0 1 0 0 0 0 0     ;   R2 <- 0
+    0 0 1 0 0 1 1 0 0 0 0 1 0 0 1 0     ;   R3 <- M[x3017] -- x15
+    1 1 1 1 0 0 0 0 0 0 1 0 0 0 1 1     ;   TRAP x23
+    0 1 1 0 0 0 1 0 1 1 0 0 0 0 0 0     ;   R1 <- M[R3]
+; TEST CHAR FOR EOT
+    0 0 0 1 1 0 0 0 0 1 1 1 1 1 0 0     ;   R4 <- R1-4
+    0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0     ;   BRz x300E -- x300E - x3006 = #8 
+; Test character for match. If a match, increment count.
+    1 0 0 1 0 0 1 0 0 1 1 1 1 1 1 1     ;   R1 <- NOT R1
+    0 0 0 1 0 0 1 0 0 1 1 0 0 0 0 1     ;   R1 <- R1 + 1
+    0 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0     ;   R1 <- R1 + R0
+    0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 1     ;   BRnp x300B
+    0 0 0 1 0 1 0 0 1 0 1 0 0 0 0 1     ;   R2 <- R2 + 1
+; Get next character from the file
+    0 0 0 1 0 1 1 0 1 1 1 0 0 0 0 1     ;   R3 <- R3 + 1
+    0 1 1 0 0 0 1 0 1 1 0 0 0 0 0 0     ;   R1 <- M[R3]
+    0 0 0 0 1 1 1 1 1 1 1 1 0 1 1 0     ;   BRnzp x3004 (LOOP BACK TO TEST) x1F6
+; OUTPUT THE COUNT
+    0 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0     ;   R0 <- M[x3015] -- #6
+    0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0     ;   R0 <- R0 + R2
+    1 1 1 1 0 0 0 0 0 0 1 0 0 0 0 1     ;   TRAP x21
+    0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 1     ;   LOAD R0 WITH x0A (NEWLINE) -- x3023 - x3011 = 
+    1 1 1 1 0 0 0 0 0 0 1 0 0 0 0 1     ;   TRAP x21
+    1 1 1 1 0 0 0 0 0 0 1 0 0 1 0 1     ;   TRAP x25 (HALT MACHINE)
+    0 0 1 1 0 0 0 0 0 0 0 1 0 1 0 1     ;   AT ADDRESS x3014: CONTAINS ADDRESS OF FILE (STARTING AT x3015)
+    0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0     ;   ASCII TEMPLATE
+    0000000001001000  ; 0x0048  H
+    0000000001100101  ; 0x0065  e
+    0000000001101100  ; 0x006C  l
+    0000000001101100  ; 0x006C  l
+    0000000001101111  ; 0x006F  o
+    0000000000100000  ; 0x0020   (space)
+    0000000001010111  ; 0x0057  W
+    0000000001101111  ; 0x006F  o
+    0000000001110010  ; 0x0072  r
+    0000000001101100  ; 0x006C  l
+    0000000001100100  ; 0x0064  d
+    0000000000100001  ; 0x0021  !
+    0000000000000100  ; 0x4  terminator             
+    0000000000001010  ; 0x000A
+    

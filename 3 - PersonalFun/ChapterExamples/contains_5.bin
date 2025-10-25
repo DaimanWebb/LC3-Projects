@@ -1,0 +1,72 @@
+
+;==========================================================================
+;                       (UPH) UNIVERSAL PROGRAM HEADER                            
+;==========================================================================
+;                              Copy—&—Paste 
+;==========================================================================
+;                                   —
+;==========================================================================
+;   OBJECTIVE: IMPLEMENT THE EXAMPLE IN FIGURE [5.17]
+;-------------------------------------------------------------------------
+;   1. Scan a block of memory for the value 5.
+;   2. Halt if found; otherwise continue scanning until exhausted.
+;==========================================================================
+;                          HIGH-LEVEL BREAKDOWN     
+;-------------------------------------------------------------------------
+;   1. Initialize registers and load memory pointer.
+;   2. Loop through memory, checking each value against -5.
+;   3. If match found, halt; otherwise increment pointer and continue.
+;==========================================================================
+;                          REGISTER CONVENTION
+;==========================================================================
+;-------------------------------------------------------------------------
+; R0    : Status flag / reset register         
+; EOP   : 0
+;-------------------------------------------------------------------------
+; R1    : Comparison value (-5)
+; EOP   : -5
+;-------------------------------------------------------------------------
+; R2    : Current memory value being checked
+; EOP   : 0 (if match found) or non-zero
+;-------------------------------------------------------------------------
+; R3    : Loop counter (number of values to check)
+; EOP   : 0
+;-------------------------------------------------------------------------
+; R4    : Pointer to current memory address
+; EOP   : Address of last checked value
+;-------------------------------------------------------------------------
+; R5    : Unused
+; EOP   : 0
+;-------------------------------------------------------------------------
+; R6    : Unused
+; EOP   : 0
+;-------------------------------------------------------------------------
+; R7    : Unused
+; EOP   : 0
+;==========================================================================
+; The program of Figure 6.9 has been written to examine the contents of the ten
+; memory locations starting at address x3100 and to store a 1 in R0 if any of them
+; contains a 5 and a 0 in R0 if none of them contains a 5.
+; The program is supposed to do the following: The first six instructions (at
+; x3000 to x3005) initialize R0 to 1, R1 to −5, and R3 to 10. The instruction at
+; x3006 initializes R4 to the address (x3100) of the first location to be tested, and
+; x3007 loads the contents of x3100 into R2.
+    0011000000000000
+0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0             ;   R0 <- 0
+0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 1             ;   R0 <- R0 + 1
+0 1 0 1 0 0 1 0 0 1 1 0 0 0 0 0             ;   R1 <- 0
+0 0 0 1 0 0 1 0 0 1 1 1 1 0 1 1             ;   R1 <- R1 - 5
+0 1 0 1 0 1 1 0 1 1 1 0 0 0 0 0             ;   R3 <- 0
+0 0 0 1 0 1 1 0 1 1 1 0 1 0 1 0             ;   R3 <- R3 + 10
+0 0 1 0 1 0 0 0 0 0 0 0 1 0 0 1             ;   R4 <- M[x3010]
+0 1 1 0 0 1 0 1 0 0 0 0 0 0 0 0             ;   R2 <- M[R4]
+0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 1             ;   R2 <- R2 + R1
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 1             ;   BRz x300F
+0 0 0 1 1 0 0 1 0 0 1 0 0 0 0 1             ;   R4 <- R4 + 1
+0 1 1 0 0 1 0 1 0 0 0 0 0 0 0 0             ;   R2 <- M[R4]
+0 0 0 1 0 1 1 0 1 1 1 1 1 1 1 1             ;   R3 <- R3 - 1
+0 0 0 0 0 0 1 1 1 1 1 1 1 0 1 0             ;   BRp x3008   
+0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0             ;   R0 <- 0
+1 1 1 1 0 0 0 0 0 0 1 0 0 1 0 1             ;   HALT
+0 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0             ;   x3100
+    

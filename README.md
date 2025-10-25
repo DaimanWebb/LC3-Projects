@@ -222,12 +222,7 @@ and after prints out “=====” again.
 ; Return Value (None)
 ;-------------------------------------------------------------------------
 
-
-
-
-
 # 3 - PERSONAL STUFF
-
 
 ## Arithmetic
 
@@ -259,19 +254,53 @@ Same program, but written in assembly vs pure machine code
 
 Same program, but uses an alias to address the x0FC offset
 
-### multiply.bin
+### R4xR5.bin
 ;   1. TO MULTIPLY THE VALUES IN R4 AND R5 AND 
 ;   2. STORE THE RESULT IN R2
 
+## CHAPTER EXAMPLES
+
+### charcount.bin
+COUNTS NUMBER OF OCCURENCES OF A CHAR THE USER INPUTS FOR A FILE
+
+### charcount.asm
+
+SAME BUT IN ASSEMBLY
+
+TAKES A 16 BIT VALUE HELD AT x3400 AND RETURNS THE BIT POSITION OF THE FIRST BIT SET [LEFT->RIGHT]
+USES MULTIPLICATION TO LEFT SHIFT THE BIT AND CHECKS WHETHER VALUE IS NEGATIVE TO DECIDE BRANCH (BRANCH AND RETURN R1 WITH THE BIT POSITION)
+
+### R2xCONST_6.asm
+LOADS INPUT VALUE INTO R2 AND MULTIPLIES IT BY 6 (OR WHATEVER VALUE IS HELD AT THE MEM LOCATION ALIASED BY "SIX")
+
+### multiplymemory.bin
+LOAD VALUES HELD AT x3007 AND x3008 INTO R1 AND R2, RESPECTIVELY
+USE R2 AS THE COUNTER AND R1 AS THE VALUE TO SUM OVER. HOLD THE PRODUCT IN R3
+
+### contains_5.bin
+; The program of Figure 6.9 has been written to examine the contents of the ten
+; memory locations starting at address x3100 and to store a 1 in R0 if any of them
+; contains a 5 and a 0 in R0 if none of them contains a 5.
+; The program is supposed to do the following: The first six instructions (at
+; x3000 to x3005) initialize R0 to 1, R1 to −5, and R3 to 10. The instruction at
+; x3006 initializes R4 to the address (x3100) of the first location to be tested, and
+; x3007 loads the contents of x3100 into R2.
+
+### find1stsetbit.bin
+RETURN 1ST BIT THAT IS SET IN A WORD STORED IN x3400
+
+### memloop.bin
+SUM UP VALUES OF AN ARRAY
 ## DATA MOVEMENT
 
 ### accessviolation_LDI.asm
-
+TRY TO ACCESS PRIVILEGED LOCATION x038C USING LDI
 ### accessviolation_LDR.asm 
-
+TRY TO ACCESS PRIVILEGED LOCATION x038C USING LDR
 ### datamoves.asm
-
-
+;   1. ALIAS ADDRESSES x3100, x3101, x3102 WITH PTR, LABEL, ALIAS, RESPECTIVELY
+;   2. PUT VALUES #5, #10, #15 AT THOSE LOCATIONS RESPECTIVELY
+;   3. PUT THE VALUES HELD AT THOSE LOCATIONS IN REGISTERS 5-7, RESPECTIVELY
 
 # LC3Tools&Tips
 ✅ Use x0A (LF) when checking for Enter in LC-3 sentinel loops.
@@ -284,7 +313,6 @@ TRAP x21 - OUT
 TRAP x22 - PUTS
 TRAP x23 - IN
 TRAP x25 - HALT
-
 
 ;==========================================================================
 ;                       (UPH) UNIVERSAL PROGRAM HEADER                           
